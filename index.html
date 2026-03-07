@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edmealem Minalu | Full-Stack Developer & Data Analyst</title>
+  <meta name="description" content="BSc Information Systems student | Passionate Full-Stack Developer, Data Analyst | HTML, CSS, JS, Node.js, Python, SQL"/>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3f37c9;
+      --text: #1d3557;
+      --text-light: #457b9d;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --border: #e0e0e0;
+    }
+    body.dark-mode {
+      --primary: #4895ef;
+      --primary-dark: #4cc9f0;
+      --text: #f1faee;
+      --text-light: #a8dadc;
+      --bg: #1d3557;
+      --card: #14213d;
+      --border: #457b9d;
+    }
+    
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(1rem, 4vw, 2rem) clamp(0.8rem, 3vw, 1.5rem);
+    }
+
+    header {
+      text-align: center;
+      padding: clamp(2.5rem, 10vw, 5rem) 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border-radius: 0 0 2rem 2rem;
+      margin-bottom: clamp(1.5rem, 5vw, 2.5rem);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .avatar {
+      width: clamp(110px, 26vw, 160px);
+      height: clamp(110px, 26vw, 160px);
+      border-radius: 50%;
+      border: clamp(4px, 1.5vw, 6px) solid white;
+      overflow: hidden;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .title {
+      font-size: clamp(1.05rem, 3.8vw, 1.3rem);
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    aside {
+      background: var(--card);
+      padding: clamp(1.2rem, 3vw, 1.8rem);
+      border-radius: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      height: fit-content;
+    }
+
+    section {
+      background: var(--card);
+      padding: clamp(1.3rem, 3.5vw, 1.8rem);
+      border-radius: 1rem;
+      margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: clamp(1.35rem, 4.2vw, 1.5rem);
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.6rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.9rem;
+      font-size: clamp(0.95rem, 3vw, 1rem);
+    }
+
+    .contact-icon {
+      width: 28px;
+      font-size: clamp(1.2rem, 3.5vw, 1.3rem);
+      margin-right: 1rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .skill-tag {
+      background: var(--primary);
+      color: white;
+      padding: 0.45rem 0.9rem;
+      border-radius: 2rem;
+      font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+      font-weight: 500;
+    }
+
+    .item {
+      margin-bottom: 1.4rem;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: clamp(1.05rem, 3.2vw, 1.15rem);
+    }
+
+    .item-subtitle {
+      color: var(--text-light);
+      margin: 0.2rem 0;
+      font-size: clamp(0.9rem, 2.8vw, 1rem);
+    }
+
+    .item-date, .item-link {
+      font-size: clamp(0.85rem, 2.6vw, 0.95rem);
+      color: var(--text-light);
+    }
+
+    .item-link {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .item-link:hover {
+      text-decoration: underline;
+    }
+
+    ul.bullet-list {
+      list-style: none;
+      padding-left: clamp(1.4rem, 4vw, 1.6rem);
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      margin-bottom: 0.6rem;
+      font-size: clamp(0.95rem, 3vw, 1.05rem);
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: -1.4rem;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin: clamp(2.5rem, 8vw, 3.5rem) 1rem;
+      font-size: clamp(0.85rem, 2.6vw, 0.9rem);
+      color: var(--text-light);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: clamp(0.8rem, 3vw, 1.5rem);
+      right: clamp(0.8rem, 3vw, 2rem);
+      background: var(--card);
+      border: none;
+      width: clamp(44px, 10vw, 48px);
+      height: clamp(44px, 10vw, 48px);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: clamp(1.2rem, 3.5vw, 1.4rem);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.3s;
+      z-index: 100;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* ── RESPONSIVE FIXES ── */
+
+    @media (min-width: 850px) {
+      .main-content {
+        grid-template-columns: minmax(300px, 340px) 1fr;
+      }
+      aside {
+        position: sticky;
+        top: 2rem;
+      }
+    }
+
+    @media (max-width: 849px) {
+      aside {
+        position: static;           /* very important on mobile */
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: clamp(2rem, 12vw, 3.5rem) 0.8rem 1.5rem;
+      }
+      .container {
+        padding: 1rem 0.9rem;
+      }
+      section {
+        padding: 1.2rem 1rem;
+      }
+      .avatar {
+        width: clamp(100px, 32vw, 130px);
+        height: clamp(100px, 32vw, 130px);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+      }
+      header {
+        padding-top: 2rem;
+      }
+      .avatar {
+        width: 96px;
+        height: 96px;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+  <header>
+    <div class="avatar">
+      <img src="Edm.jpg" alt="Edmealem Minalu">
+    </div>
+    <h1>Edmealem Minalu</h1>
+    <div class="title">BSc in Information System Student • Full-Stack Developer & Data Analyst</div>
+  </header>
+
+  <div class="container">
+    <div class="main-content">
+      
+      <!-- Left Sidebar -->
+      <aside>
+        <section>
+          <h2>Personal Details</h2>
+          <div class="contact-item"><span class="contact-icon">✉</span> edmealemminahus@gmail.com</div>
+          <div class="contact-item"><span class="contact-icon">📱</span> +251 967520581</div>
+          <div class="contact-item"><span class="contact-icon">📍</span> Addis Ababa, Ethiopia</div>
+          <div class="contact-item"><span class="contact-icon">🎂</span> September 27, 2004</div>
+          <div class="contact-item"><span class="contact-icon">♂</span> Male • Ethiopian</div>
+        </section>
+
+        <section>
+          <h2>Languages</h2>
+          <div>English — Fluent</div>
+          <div>Amharic — Native</div>
+        </section>
+
+        <section>
+          <h2>Qualities</h2>
+          <div>• Communication</div>
+          <div>• Problem Solving</div>
+          <div>• Time Management</div>
+        </section>
+
+        <section>
+          <h2>Find me</h2>
+          <div class="contact-item">
+            <span class="contact-icon">🐱</span>
+            <a href="https://github.com/Edi00-edi" target="_blank" style="color:var(--primary); text-decoration:none;">github.com/Edi00-edi</a>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Main Content -->
+      <main>
+        <section>
+          <h2>About Me</h2>
+          <p>I am an Information Systems student at Hawassa University currently pursuing a Bachelor of Science (BSc) degree. I am passionate about technology and continuously improving my knowledge in web development.</p>
+          <p>I specialize in front-end development and have experience working with HTML, CSS, and JavaScript to build responsive and user-friendly websites.</p>
+          <p>In addition, I have knowledge of MySQL for database management. During my studies, I completed approximately 37 courses that helped me build strong technical and analytical skills.</p>
+          <p>I also have basic knowledge of data analysis and computer networking. I learned networking concepts such as IP addressing and Variable Length Subnet Masking (VLSM) used for efficient network configuration in organizations and companies.</p>
+          <p>My goal is to become a professional web developer and continue improving my skills in modern web technologies and data-driven systems.</p>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <div class="item">
+            <div class="item-title">Bachelor of Science (BSc) in Information System</div>
+            <div class="item-subtitle">Hawassa University, Hawassa</div>
+            <div class="item-date">December 2023 – Present</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Certificates</h2>
+          <div class="item">
+            <div class="item-title">Fundamentals of Programming</div>
+            <div class="item-subtitle">Udacity</div>
+            <div class="item-date"><a href="https://www.udacity.com/certificate/e/bd6afc74-f8e9-11f0-89a0-f3b07a7b6c68" target="_blank" class="item-link">View Certificate</a></div>
+          </div>
+          <div class="item">
+            <div class="item-title">Artificial Intelligence Fundamental</div>
+            <div class="item-subtitle">Udacity</div>
+            <div class="item-date"><a href="https://www.udacity.com/certificate/e/c7c29288-f86f-11f0-8710-0308ece4c91b" target="_blank" class="item-link">View Certificate</a></div>
+          </div>
+          <div class="item">
+            <div class="item-title">Data Analysis Fundamentals</div>
+            <div class="item-subtitle">Udacity</div>
+            <div class="item-date"><a href="https://www.udacity.com/certificate/e/2fdf5484-f8e6-11f0-a622-43b6189b21ef" target="_blank" class="item-link">View Certificate</a></div>
+          </div>
+          <div class="item">
+            <div class="item-title">Android Developer Fundamentals</div>
+            <div class="item-subtitle">Udacity</div>
+            <div class="item-date"><a href="https://www.udacity.com/certificate/e/f0696516-f81c-11f0-9aa3-5b7b8ab04d4a" target="_blank" class="item-link">View Certificate</a></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Courses (~37 completed)</h2>
+          <ul class="bullet-list">
+            <li>SQL, MySQL, MongoDB</li>
+            <li>Internet Programming</li>
+            <li>Data Structures & Algorithms</li>
+            <li>Artificial Intelligence</li>
+            <li>Data Analysis / Data Science</li>
+            <li>Data Communication and Networking</li>
+          </ul>
+          <p style="margin-top:1rem; font-size:0.95rem; color:var(--text-light);">
+            During my studies at Hawassa University, I completed approximately 37 courses. Some major ones are listed above.
+          </p>
+        </section>
+
+        <section>
+          <h2>Skills</h2>
+          <div class="skills-list">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">HTML5 • CSS3</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Project Management</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    I consent to the processing of my personal data for the purpose of recruitment.
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>
